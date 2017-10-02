@@ -66,7 +66,6 @@ public class TestCliente {
 					try {
 						server.close();
 					} catch (IOException e) {
-						// TODO Auto-generated catch block
 						JOptionPane.showMessageDialog(null, "Falló");
 
 					}
@@ -75,14 +74,19 @@ public class TestCliente {
 			}
 		});
 		myThread.start();
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e1) {
+			e1.printStackTrace();
+		}
 	}
-
 	@Test
 	public void testConexionConElServidor() {
 		Queue<Paquete> queue = new LinkedList<Paquete>();
 		
 		queue.add(new Paquete());
 		testServer(queue);
+		
 		Cliente cliente = new Cliente("localhost",55050);
 
 		// Pasado este punto la conexión entre el cliente y el servidor resulto exitosa
